@@ -1,0 +1,30 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block script %}
+<script src="{% static 'network/following.js' %}"></script>
+<script src="https://kit.fontawesome.com/ee1e4d6724.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+
+{% block body %}
+    
+    <div id="userFollowingPosts" class="container pt-2">
+
+        <div id="following-posts-view">
+
+                
+        </div>
+
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center" id="following-page-number">
+                
+            </ul>
+        </nav>
+        
+    </div>
+        
+
+{% endblock %}
+

@@ -1,0 +1,58 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+
+{% block script %}
+    <script src="{% static 'network/index.js' %}"></script>
+    <script src="https://kit.fontawesome.com/ee1e4d6724.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+
+{% block body %}
+    
+    <div id="allPosts" class="container pt-2">
+
+        <h3>All Posts</h3>
+        <br>
+        <div id="compose-view" class="card pt-3">
+            <div class="card-body">
+                <h5>Create New Post</h5>
+                <form id="compose-form">
+                    {% csrf_token %}
+                    <br>
+                    <textarea class="form-control" id="postContent" placeholder="New Post"></textarea>
+                    <br>    
+                    <input type="submit" class="btn btn-primary" value="Post"/>
+                </form>
+            </div>
+            
+        </div>
+        <br>
+        <br>
+
+        {% if page_obj %}
+            <div id="posts-view">
+
+                
+            </div>
+
+
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center" id="page-number">
+                    
+                </ul>
+            </nav>
+            
+
+        {% else %}
+
+            <h4>No Posts Available</h4>
+
+        {% endif %}
+    
+        
+
+    </div>
+
+{% endblock %}
+

@@ -1,0 +1,70 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% if user.is_authenticated %}
+{% block script %}
+<script src="{% static 'network/profile.js' %}"></script>
+<script src="https://kit.fontawesome.com/ee1e4d6724.js" crossorigin="anonymous"></script>
+{% endblock %}
+{%endif%}
+
+{% block body %}
+    
+    <div id="profile" class="container pt-2">
+
+        
+
+        {% if me is not True %}
+        
+        <h3>{{username}} Profile</h3>
+
+            {% if userFollowing is False%}
+                <form action="{% url 'follow' username %}" method="POST">
+                    {% csrf_token %}
+                    <button class="btn btn-info">Follow</button>
+                </form>
+                <br>                                            
+            {%else%}
+                <form action="{% url 'unfollow' username %}" method="POST">
+                    {% csrf_token %}
+                    <button class="btn btn-danger">Unfollow</button>
+                </form>
+                <br>
+
+            {%endif%}
+        {%else%}
+
+        <h3>Profile</h3>
+            <br>
+            <div id="compose-view" class="card pt-3">
+                <div class="card-body">
+                <p>Followers: {{followers}}</p> 
+                <p>Following: {{following}}</p>
+                </div>
+            </div>
+    
+            <br>
+            <br>
+    
+            <h5>{{user}} Posts</h5>
+            <br>
+            <div id="profilePosts" class="container pt-2">
+
+                <div id="profile-posts-view">
+        
+                        
+                </div>
+        
+        
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center" id="profile-page-number">
+                        
+                    </ul>
+                </nav>
+                
+            </div>
+        {%endif%}
+
+</div>
+
+{% endblock %}
